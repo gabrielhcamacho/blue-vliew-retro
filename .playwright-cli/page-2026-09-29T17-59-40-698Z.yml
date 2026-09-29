@@ -1,0 +1,527 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Blog Blog" [ref=e6] [cursor=pointer]:
+          - /url: /blog
+        - link "Sobre Sobre" [ref=e8] [cursor=pointer]:
+          - /url: /sobre
+        - button "Ver imóveis Ver imóveis" [ref=e11] [cursor=pointer]
+        - link "Área do investidor Área do investidor" [ref=e15] [cursor=pointer]:
+          - /url: /investir
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /
+        - img "Blueview Imóveis" [ref=e19]
+      - generic [ref=e20]:
+        - link "Meus favoritos Meus favoritos" [ref=e21] [cursor=pointer]:
+          - /url: /favoritos
+        - link [ref=e25] [cursor=pointer]:
+          - /url: /contato
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e33]:
+        - link [ref=e35] [cursor=pointer]:
+          - /url: /
+          - img "Blueview Imóveis" [ref=e36]
+        - navigation [ref=e37]:
+          - generic [ref=e38]:
+            - link "Imóveis Imóveis" [ref=e39] [cursor=pointer]:
+              - /url: /imoveis
+            - link "Lançamentos Lançamentos" [ref=e41] [cursor=pointer]:
+              - /url: /imoveis?status_imovel=lancamento
+            - link "Sobre Sobre" [ref=e43] [cursor=pointer]:
+              - /url: /sobre
+            - link "Blog Blog" [ref=e45] [cursor=pointer]:
+              - /url: /blog
+            - link "Contato Contato" [ref=e47] [cursor=pointer]:
+              - /url: /contato
+        - generic [ref=e50]:
+          - heading "Blueview" [level=1] [ref=e52]
+          - generic [ref=e55]:
+            - paragraph [ref=e56]: "[ Blueview Imóveis ] Litoral catarinense"
+            - paragraph [ref=e57]: Viva com vista para o mar. Apartamentos, coberturas e lançamentos escolhidos a dedo, com o olhar de quem vive o litoral.
+            - link [ref=e59] [cursor=pointer]:
+              - /url: /imoveis
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: "[ 01 ] Busca"
+            - heading "Encontre seu próximo endereço." [level=2] [ref=e69]
+          - link "Pesquisa avançada" [ref=e70] [cursor=pointer]:
+            - /url: /imoveis
+        - search [ref=e73]:
+          - generic [ref=e75]:
+            - 'combobox "Busque pelo nome: Residencial Marina, Infinity Coast..." [ref=e79]'
+            - generic [ref=e80]: ⌘K
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic: Localização
+              - combobox "Localização" [ref=e83] [cursor=pointer]:
+                - option "Qualquer cidade" [selected]
+                - option "Itapema"
+                - option "Balneário Camboriú"
+            - generic [ref=e84]:
+              - generic: Tipo
+              - combobox "Tipo" [ref=e85] [cursor=pointer]:
+                - option "Todos os tipos" [selected]
+                - option "Apartamento"
+                - option "Cobertura"
+                - option "Flat / Studio"
+                - option "Duplex"
+                - option "Garden"
+                - option "Terreno"
+            - generic [ref=e86]:
+              - generic: Status
+              - combobox "Status" [ref=e87] [cursor=pointer]:
+                - option "Todos" [selected]
+                - option "Na planta"
+                - option "Mobiliado"
+                - option "Sem mobília"
+            - generic [ref=e88]:
+              - generic: Faixa de valor
+              - combobox "Faixa de valor" [ref=e89] [cursor=pointer]:
+                - option "Qualquer valor" [selected]
+                - option "Até R$ 500 mil"
+                - option "R$ 500 mil a R$ 1 mi"
+                - option "R$ 1 mi a R$ 1,5 mi"
+                - option "R$ 1,5 mi a R$ 3 mi"
+                - option "R$ 3 mi a R$ 5 mi"
+                - option "R$ 5 mi a R$ 10 mi"
+                - option "Acima de R$ 10 mi"
+            - button "Buscar imóveis" [ref=e90] [cursor=pointer]
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - paragraph [ref=e99]: "[ 02 ] Destaques"
+            - heading "Imóveis em destaque" [level=2] [ref=e100]
+            - paragraph [ref=e101]: Passe o mouse sobre o card para ver os detalhes
+          - link "Ver todos →" [ref=e102] [cursor=pointer]:
+            - /url: /imoveis
+        - generic [ref=e103]:
+          - button "Anterior" [disabled] [ref=e104]
+          - generic [ref=e107]:
+            - link "Neos Praia Brava Venda Salvar nos favoritos IMV27008 Neos Praia Brava Itajaí, Praia Brava de Itajaí R$ 4.700.000 Ver mais 3 suítes 3 vagas 160.25 m² Destaques do imóvel Neos Praia Brava R$ 4.700.000 Ver detalhes" [ref=e109] [cursor=pointer]:
+              - /url: /imoveis/f62716b1-7a7b-4143-9b3d-79e8077b8b4a
+              - generic [ref=e111]:
+                - generic [ref=e114]:
+                  - generic [ref=e115]:
+                    - img "Neos Praia Brava" [ref=e117]
+                    - generic [ref=e118]: Venda
+                    - button "Salvar nos favoritos" [ref=e121]
+                  - generic [ref=e124]:
+                    - generic [ref=e125]:
+                      - generic [ref=e126]: IMV27008
+                      - heading "Neos Praia Brava" [level=3] [ref=e131]
+                      - paragraph [ref=e132]:
+                        - generic [ref=e136]: Itajaí, Praia Brava de Itajaí
+                    - generic [ref=e137]:
+                      - paragraph [ref=e138]: R$ 4.700.000
+                      - generic [ref=e139]: Ver mais
+                - generic [ref=e144]:
+                  - generic [ref=e145]:
+                    - paragraph [ref=e151]: 3 suítes
+                    - paragraph [ref=e158]: 3 vagas
+                    - paragraph [ref=e170]: 160.25 m²
+                  - generic [ref=e171]:
+                    - paragraph [ref=e172]: Destaques do imóvel
+                    - heading "Neos Praia Brava" [level=3] [ref=e173]
+                    - paragraph [ref=e174]: R$ 4.700.000
+                  - generic [ref=e175]: Ver detalhes
+            - link "Neos Praia Brava Venda Salvar nos favoritos IMV49509 Neos Praia Brava Itajaí, Praia Brava de Itajaí R$ 5.250.000 Ver mais 3 suítes 3 vagas 163.8 m² Destaques do imóvel Neos Praia Brava R$ 5.250.000 Ver detalhes" [ref=e180] [cursor=pointer]:
+              - /url: /imoveis/22fc5132-5d5e-4361-a444-69e346c38f09
+              - generic [ref=e182]:
+                - generic [ref=e185]:
+                  - generic [ref=e186]:
+                    - img "Neos Praia Brava" [ref=e188]
+                    - generic [ref=e189]: Venda
+                    - button "Salvar nos favoritos" [ref=e192]
+                  - generic [ref=e195]:
+                    - generic [ref=e196]:
+                      - generic [ref=e197]: IMV49509
+                      - heading "Neos Praia Brava" [level=3] [ref=e202]
+                      - paragraph [ref=e203]:
+                        - generic [ref=e207]: Itajaí, Praia Brava de Itajaí
+                    - generic [ref=e208]:
+                      - paragraph [ref=e209]: R$ 5.250.000
+                      - generic [ref=e210]: Ver mais
+                - generic [ref=e215]:
+                  - generic [ref=e216]:
+                    - paragraph [ref=e222]: 3 suítes
+                    - paragraph [ref=e229]: 3 vagas
+                    - paragraph [ref=e241]: 163.8 m²
+                  - generic [ref=e242]:
+                    - paragraph [ref=e243]: Destaques do imóvel
+                    - heading "Neos Praia Brava" [level=3] [ref=e244]
+                    - paragraph [ref=e245]: R$ 5.250.000
+                  - generic [ref=e246]: Ver detalhes
+            - link "Yachthouse by Pininfarina Venda Salvar nos favoritos IMV51392 Yachthouse by Pininfarina Balneário Camboriú, Centro R$ 12.500.000 Ver mais 4 suítes 3 vagas 265 m² Destaques do imóvel Yachthouse by Pininfarina R$ 12.500.000 Ver detalhes" [ref=e251] [cursor=pointer]:
+              - /url: /imoveis/f75ebc66-c4a9-452c-9870-647f41a70d57
+              - generic [ref=e253]:
+                - generic [ref=e256]:
+                  - generic [ref=e257]:
+                    - img "Yachthouse by Pininfarina" [ref=e259]
+                    - generic [ref=e260]: Venda
+                    - button "Salvar nos favoritos" [ref=e263]
+                  - generic [ref=e266]:
+                    - generic [ref=e267]:
+                      - generic [ref=e268]: IMV51392
+                      - heading "Yachthouse by Pininfarina" [level=3] [ref=e273]
+                      - paragraph [ref=e274]:
+                        - generic [ref=e278]: Balneário Camboriú, Centro
+                    - generic [ref=e279]:
+                      - paragraph [ref=e280]: R$ 12.500.000
+                      - generic [ref=e281]: Ver mais
+                - generic [ref=e286]:
+                  - generic [ref=e287]:
+                    - paragraph [ref=e293]: 4 suítes
+                    - paragraph [ref=e300]: 3 vagas
+                    - paragraph [ref=e312]: 265 m²
+                  - generic [ref=e313]:
+                    - paragraph [ref=e314]: Destaques do imóvel
+                    - heading "Yachthouse by Pininfarina" [level=3] [ref=e315]
+                    - paragraph [ref=e316]: R$ 12.500.000
+                  - generic [ref=e317]: Ver detalhes
+            - link "Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica Venda Salvar nos favoritos Exclusivo Blueview Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica Balneário Camboriú, Centro R$ 3.250.000 Ver mais 3 suítes 3 vagas 137 m² Destaques do imóvel Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica R$ 3.250.000 Ver detalhes" [ref=e322] [cursor=pointer]:
+              - /url: /imoveis/dwv-661245
+              - generic [ref=e324]:
+                - generic [ref=e327]:
+                  - generic [ref=e328]:
+                    - img "Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica" [ref=e330]
+                    - generic [ref=e331]: Venda
+                    - button "Salvar nos favoritos" [ref=e334]
+                  - generic [ref=e337]:
+                    - generic [ref=e338]:
+                      - generic [ref=e339]: Exclusivo Blueview
+                      - heading "Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica" [level=3] [ref=e344]
+                      - paragraph [ref=e345]:
+                        - generic [ref=e349]: Balneário Camboriú, Centro
+                    - generic [ref=e350]:
+                      - paragraph [ref=e351]: R$ 3.250.000
+                      - generic [ref=e352]: Ver mais
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - paragraph [ref=e364]: 3 suítes
+                    - paragraph [ref=e371]: 3 vagas
+                    - paragraph [ref=e383]: 137 m²
+                  - generic [ref=e384]:
+                    - paragraph [ref=e385]: Destaques do imóvel
+                    - heading "Apartamento Semimobiliado com Lazer Completo e Vista Panorâmica" [level=3] [ref=e386]
+                    - paragraph [ref=e387]: R$ 3.250.000
+                  - generic [ref=e388]: Ver detalhes
+            - link "Garden Square Venda Salvar nos favoritos Exclusivo Blueview Garden Square Itapema, Meia Praia R$ 4.600.000 Ver mais 4 suítes 4 vagas 179 m² Destaques do imóvel Garden Square R$ 4.600.000 Ver detalhes" [ref=e393] [cursor=pointer]:
+              - /url: /imoveis/dwv-661244
+              - generic [ref=e395]:
+                - generic [ref=e398]:
+                  - generic [ref=e399]:
+                    - img "Garden Square" [ref=e401]
+                    - generic [ref=e402]: Venda
+                    - button "Salvar nos favoritos" [ref=e405]
+                  - generic [ref=e408]:
+                    - generic [ref=e409]:
+                      - generic [ref=e410]: Exclusivo Blueview
+                      - heading "Garden Square" [level=3] [ref=e415]
+                      - paragraph [ref=e416]:
+                        - generic [ref=e420]: Itapema, Meia Praia
+                    - generic [ref=e421]:
+                      - paragraph [ref=e422]: R$ 4.600.000
+                      - generic [ref=e423]: Ver mais
+                - generic [ref=e428]:
+                  - generic [ref=e429]:
+                    - paragraph [ref=e435]: 4 suítes
+                    - paragraph [ref=e442]: 4 vagas
+                    - paragraph [ref=e454]: 179 m²
+                  - generic [ref=e455]:
+                    - paragraph [ref=e456]: Destaques do imóvel
+                    - heading "Garden Square" [level=3] [ref=e457]
+                    - paragraph [ref=e458]: R$ 4.600.000
+                  - generic [ref=e459]: Ver detalhes
+            - link "Summer Sun Lançamento Salvar nos favoritos Exclusivo Blueview Summer Sun Balneário Camboriú, Pioneiros R$ 2.980.000 Ver mais 2 suítes 3 vagas 140 m² Destaques do imóvel Summer Sun R$ 2.980.000 Ver detalhes" [ref=e464] [cursor=pointer]:
+              - /url: /imoveis/dwv-661243
+              - generic [ref=e466]:
+                - generic [ref=e469]:
+                  - generic [ref=e470]:
+                    - img "Summer Sun" [ref=e472]
+                    - generic [ref=e473]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e476]
+                  - generic [ref=e479]:
+                    - generic [ref=e480]:
+                      - generic [ref=e481]: Exclusivo Blueview
+                      - heading "Summer Sun" [level=3] [ref=e486]
+                      - paragraph [ref=e487]:
+                        - generic [ref=e491]: Balneário Camboriú, Pioneiros
+                    - generic [ref=e492]:
+                      - paragraph [ref=e493]: R$ 2.980.000
+                      - generic [ref=e494]: Ver mais
+                - generic [ref=e499]:
+                  - generic [ref=e500]:
+                    - paragraph [ref=e506]: 2 suítes
+                    - paragraph [ref=e513]: 3 vagas
+                    - paragraph [ref=e525]: 140 m²
+                  - generic [ref=e526]:
+                    - paragraph [ref=e527]: Destaques do imóvel
+                    - heading "Summer Sun" [level=3] [ref=e528]
+                    - paragraph [ref=e529]: R$ 2.980.000
+                  - generic [ref=e530]: Ver detalhes
+          - button "Próximo" [ref=e534] [cursor=pointer]
+        - generic [ref=e537]:
+          - button "Ir para item 1" [ref=e538] [cursor=pointer]
+          - button "Ir para item 2" [ref=e539] [cursor=pointer]
+          - button "Ir para item 3" [ref=e540] [cursor=pointer]
+          - button "Ir para item 4" [ref=e541] [cursor=pointer]
+          - button "Ir para item 5" [ref=e542] [cursor=pointer]
+          - button "Ir para item 6" [ref=e543] [cursor=pointer]
+      - generic [ref=e547]:
+        - generic [ref=e548]:
+          - generic [ref=e549]:
+            - paragraph [ref=e550]: "[ 03 ] Futuro"
+            - heading "Lançamentos" [level=2] [ref=e551]
+            - paragraph [ref=e552]: Os melhores lançamentos de Itapema e região
+          - link "Ver todos →" [ref=e553] [cursor=pointer]:
+            - /url: /imoveis?status_imovel=lancamento
+        - generic [ref=e554]:
+          - button "Anterior" [disabled] [ref=e555]
+          - generic [ref=e558]:
+            - link "Summer Sun Lançamento Salvar nos favoritos Exclusivo Blueview Summer Sun Balneário Camboriú, Pioneiros R$ 2.980.000 Ver mais 2 suítes 3 vagas 140 m² Destaques do imóvel Summer Sun R$ 2.980.000 Ver detalhes" [ref=e560] [cursor=pointer]:
+              - /url: /imoveis/dwv-661243
+              - generic [ref=e562]:
+                - generic [ref=e565]:
+                  - generic [ref=e566]:
+                    - img "Summer Sun" [ref=e568]
+                    - generic [ref=e569]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e572]
+                  - generic [ref=e575]:
+                    - generic [ref=e576]:
+                      - generic [ref=e577]: Exclusivo Blueview
+                      - heading "Summer Sun" [level=3] [ref=e582]
+                      - paragraph [ref=e583]:
+                        - generic [ref=e587]: Balneário Camboriú, Pioneiros
+                    - generic [ref=e588]:
+                      - paragraph [ref=e589]: R$ 2.980.000
+                      - generic [ref=e590]: Ver mais
+                - generic [ref=e595]:
+                  - generic [ref=e596]:
+                    - paragraph [ref=e602]: 2 suítes
+                    - paragraph [ref=e609]: 3 vagas
+                    - paragraph [ref=e621]: 140 m²
+                  - generic [ref=e622]:
+                    - paragraph [ref=e623]: Destaques do imóvel
+                    - heading "Summer Sun" [level=3] [ref=e624]
+                    - paragraph [ref=e625]: R$ 2.980.000
+                  - generic [ref=e626]: Ver detalhes
+            - link "Summer Sun Lançamento Balneário Camboriú Lançamento Salvar nos favoritos Exclusivo Blueview Summer Sun Lançamento Balneário Camboriú Balneário Camboriú, Pioneiros R$ 2.730.000 Ver mais 2 suítes 3 vagas 140 m² Destaques do imóvel Summer Sun Lançamento Balneário Camboriú R$ 2.730.000 Ver detalhes" [ref=e631] [cursor=pointer]:
+              - /url: /imoveis/dwv-661242
+              - generic [ref=e633]:
+                - generic [ref=e636]:
+                  - generic [ref=e637]:
+                    - img "Summer Sun Lançamento Balneário Camboriú" [ref=e639]
+                    - generic [ref=e640]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e643]
+                  - generic [ref=e646]:
+                    - generic [ref=e647]:
+                      - generic [ref=e648]: Exclusivo Blueview
+                      - heading "Summer Sun Lançamento Balneário Camboriú" [level=3] [ref=e653]
+                      - paragraph [ref=e654]:
+                        - generic [ref=e658]: Balneário Camboriú, Pioneiros
+                    - generic [ref=e659]:
+                      - paragraph [ref=e660]: R$ 2.730.000
+                      - generic [ref=e661]: Ver mais
+                - generic [ref=e666]:
+                  - generic [ref=e667]:
+                    - paragraph [ref=e673]: 2 suítes
+                    - paragraph [ref=e680]: 3 vagas
+                    - paragraph [ref=e692]: 140 m²
+                  - generic [ref=e693]:
+                    - paragraph [ref=e694]: Destaques do imóvel
+                    - heading "Summer Sun Lançamento Balneário Camboriú" [level=3] [ref=e695]
+                    - paragraph [ref=e696]: R$ 2.730.000
+                  - generic [ref=e697]: Ver detalhes
+            - link "Hyde Lançamento Salvar nos favoritos Exclusivo Blueview Hyde Balneário Camboriú, Centro R$ 14.641.036 Ver mais 4 suítes 4 vagas 232.15 m² Destaques do imóvel Hyde R$ 14.641.036 Ver detalhes" [ref=e702] [cursor=pointer]:
+              - /url: /imoveis/dwv-646237
+              - generic [ref=e704]:
+                - generic [ref=e707]:
+                  - generic [ref=e708]:
+                    - img "Hyde" [ref=e710]
+                    - generic [ref=e711]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e714]
+                  - generic [ref=e717]:
+                    - generic [ref=e718]:
+                      - generic [ref=e719]: Exclusivo Blueview
+                      - heading "Hyde" [level=3] [ref=e724]
+                      - paragraph [ref=e725]:
+                        - generic [ref=e729]: Balneário Camboriú, Centro
+                    - generic [ref=e730]:
+                      - paragraph [ref=e731]: R$ 14.641.036
+                      - generic [ref=e732]: Ver mais
+                - generic [ref=e737]:
+                  - generic [ref=e738]:
+                    - paragraph [ref=e744]: 4 suítes
+                    - paragraph [ref=e751]: 4 vagas
+                    - paragraph [ref=e763]: 232.15 m²
+                  - generic [ref=e764]:
+                    - paragraph [ref=e765]: Destaques do imóvel
+                    - heading "Hyde" [level=3] [ref=e766]
+                    - paragraph [ref=e767]: R$ 14.641.036
+                  - generic [ref=e768]: Ver detalhes
+            - link "\\Oceana Residence Lançamento Salvar nos favoritos Exclusivo Blueview \\Oceana Residence Balneário Camboriú, Centro R$ 5.585.136 Ver mais 4 suítes 3 vagas 274.64 m² Destaques do imóvel \\Oceana Residence R$ 5.585.136 Ver detalhes" [ref=e773] [cursor=pointer]:
+              - /url: /imoveis/dwv-646229
+              - generic [ref=e775]:
+                - generic [ref=e778]:
+                  - generic [ref=e779]:
+                    - img "\\Oceana Residence" [ref=e781]
+                    - generic [ref=e782]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e785]
+                  - generic [ref=e788]:
+                    - generic [ref=e789]:
+                      - generic [ref=e790]: Exclusivo Blueview
+                      - heading "\\Oceana Residence" [level=3] [ref=e795]
+                      - paragraph [ref=e796]:
+                        - generic [ref=e800]: Balneário Camboriú, Centro
+                    - generic [ref=e801]:
+                      - paragraph [ref=e802]: R$ 5.585.136
+                      - generic [ref=e803]: Ver mais
+                - generic [ref=e808]:
+                  - generic [ref=e809]:
+                    - paragraph [ref=e815]: 4 suítes
+                    - paragraph [ref=e822]: 3 vagas
+                    - paragraph [ref=e834]: 274.64 m²
+                  - generic [ref=e835]:
+                    - paragraph [ref=e836]: Destaques do imóvel
+                    - heading "\\Oceana Residence" [level=3] [ref=e837]
+                    - paragraph [ref=e838]: R$ 5.585.136
+                  - generic [ref=e839]: Ver detalhes
+            - link "Solar di Capri Lançamento Salvar nos favoritos Exclusivo Blueview Solar di Capri Balneário Camboriú, Centro R$ 3.650.000 Ver mais 2 suítes 2 vagas 270.94 m² Destaques do imóvel Solar di Capri R$ 3.650.000 Ver detalhes" [ref=e844] [cursor=pointer]:
+              - /url: /imoveis/dwv-646270
+              - generic [ref=e846]:
+                - generic [ref=e849]:
+                  - generic [ref=e850]:
+                    - img "Solar di Capri" [ref=e852]
+                    - generic [ref=e853]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e856]
+                  - generic [ref=e859]:
+                    - generic [ref=e860]:
+                      - generic [ref=e861]: Exclusivo Blueview
+                      - heading "Solar di Capri" [level=3] [ref=e866]
+                      - paragraph [ref=e867]:
+                        - generic [ref=e871]: Balneário Camboriú, Centro
+                    - generic [ref=e872]:
+                      - paragraph [ref=e873]: R$ 3.650.000
+                      - generic [ref=e874]: Ver mais
+                - generic [ref=e879]:
+                  - generic [ref=e880]:
+                    - paragraph [ref=e886]: 2 suítes
+                    - paragraph [ref=e893]: 2 vagas
+                    - paragraph [ref=e905]: 270.94 m²
+                  - generic [ref=e906]:
+                    - paragraph [ref=e907]: Destaques do imóvel
+                    - heading "Solar di Capri" [level=3] [ref=e908]
+                    - paragraph [ref=e909]: R$ 3.650.000
+                  - generic [ref=e910]: Ver detalhes
+            - link "Marena Lançamento Salvar nos favoritos Exclusivo Blueview Marena Balneário Camboriú, Centro R$ 7.216.505 Ver mais 4 suítes 3 vagas 177.78 m² Destaques do imóvel Marena R$ 7.216.505 Ver detalhes" [ref=e915] [cursor=pointer]:
+              - /url: /imoveis/dwv-646240
+              - generic [ref=e917]:
+                - generic [ref=e920]:
+                  - generic [ref=e921]:
+                    - img "Marena" [ref=e923]
+                    - generic [ref=e924]: Lançamento
+                    - button "Salvar nos favoritos" [ref=e927]
+                  - generic [ref=e930]:
+                    - generic [ref=e931]:
+                      - generic [ref=e932]: Exclusivo Blueview
+                      - heading "Marena" [level=3] [ref=e937]
+                      - paragraph [ref=e938]:
+                        - generic [ref=e942]: Balneário Camboriú, Centro
+                    - generic [ref=e943]:
+                      - paragraph [ref=e944]: R$ 7.216.505
+                      - generic [ref=e945]: Ver mais
+                - generic [ref=e950]:
+                  - generic [ref=e951]:
+                    - paragraph [ref=e957]: 4 suítes
+                    - paragraph [ref=e964]: 3 vagas
+                    - paragraph [ref=e976]: 177.78 m²
+                  - generic [ref=e977]:
+                    - paragraph [ref=e978]: Destaques do imóvel
+                    - heading "Marena" [level=3] [ref=e979]
+                    - paragraph [ref=e980]: R$ 7.216.505
+                  - generic [ref=e981]: Ver detalhes
+          - button "Próximo" [ref=e985] [cursor=pointer]
+        - generic [ref=e988]:
+          - button "Ir para item 1" [ref=e989] [cursor=pointer]
+          - button "Ir para item 2" [ref=e990] [cursor=pointer]
+          - button "Ir para item 3" [ref=e991] [cursor=pointer]
+          - button "Ir para item 4" [ref=e992] [cursor=pointer]
+          - button "Ir para item 5" [ref=e993] [cursor=pointer]
+          - button "Ir para item 6" [ref=e994] [cursor=pointer]
+      - generic [ref=e997]:
+        - generic [ref=e998]:
+          - generic [ref=e1001]:
+            - paragraph [ref=e1002]: "[ 04 ] Proprietários"
+            - heading "Você é proprietário de um imóvel e deseja anunciá-lo aqui?" [level=3] [ref=e1003]
+          - link [ref=e1004] [cursor=pointer]:
+            - /url: /contato
+        - generic [ref=e1008]:
+          - generic [ref=e1011]:
+            - paragraph [ref=e1012]: "[ 05 ] Investidores"
+            - heading "Procurando o melhor investimento? Você não precisa fazer isso sozinho." [level=3] [ref=e1013]
+          - link [ref=e1014] [cursor=pointer]:
+            - /url: /investir
+  - contentinfo [ref=e1018]:
+    - generic [ref=e1019]:
+      - generic [ref=e1020]:
+        - generic [ref=e1021]:
+          - generic [ref=e1022]:
+            - link [ref=e1023] [cursor=pointer]:
+              - /url: /
+              - img "Blueview Imóveis" [ref=e1024]
+            - paragraph [ref=e1025]: Transformando oportunidades do mercado imobiliário em patrimônio, rentabilidade e qualidade de vida.
+          - generic [ref=e1026]:
+            - heading "[ Imóveis ]" [level=3] [ref=e1027]
+            - list [ref=e1028]:
+              - listitem [ref=e1029]:
+                - link "Imóveis à venda Imóveis à venda" [ref=e1030] [cursor=pointer]:
+                  - /url: /imoveis?purpose=venda
+              - listitem [ref=e1032]:
+                - link "Imóveis para alugar Imóveis para alugar" [ref=e1033] [cursor=pointer]:
+                  - /url: /imoveis?purpose=aluguel
+              - listitem [ref=e1035]:
+                - link "Apartamentos Apartamentos" [ref=e1036] [cursor=pointer]:
+                  - /url: /imoveis?property_type=apartamento
+              - listitem [ref=e1038]:
+                - link "Casas Casas" [ref=e1039] [cursor=pointer]:
+                  - /url: /imoveis?property_type=casa
+              - listitem [ref=e1041]:
+                - link "Terrenos Terrenos" [ref=e1042] [cursor=pointer]:
+                  - /url: /imoveis?property_type=terreno
+              - listitem [ref=e1044]:
+                - link "Lançamentos Lançamentos" [ref=e1045] [cursor=pointer]:
+                  - /url: /imoveis?status_imovel=lancamento
+          - generic [ref=e1047]:
+            - heading "[ Blueview ]" [level=3] [ref=e1048]
+            - list [ref=e1049]:
+              - listitem [ref=e1050]:
+                - link "Sobre a Blueview Sobre a Blueview" [ref=e1051] [cursor=pointer]:
+                  - /url: /sobre
+              - listitem [ref=e1053]:
+                - link "Blog Blog" [ref=e1054] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e1056]:
+                - link "Área do investidor Área do investidor" [ref=e1057] [cursor=pointer]:
+                  - /url: /investir
+              - listitem [ref=e1059]:
+                - link "Meus favoritos Meus favoritos" [ref=e1060] [cursor=pointer]:
+                  - /url: /favoritos
+              - listitem [ref=e1062]:
+                - link "Contato Contato" [ref=e1063] [cursor=pointer]:
+                  - /url: /contato
+          - generic [ref=e1065]:
+            - heading "[ Contato ]" [level=3] [ref=e1066]
+            - list [ref=e1067]:
+              - listitem [ref=e1068]: Segunda a domingo, das 8h às 19h
+        - generic [ref=e1073]:
+          - paragraph [ref=e1074]: © 2026 Blueview Imóveis. Todos os direitos reservados.
+          - link "Webmail Corretor" [ref=e1075] [cursor=pointer]:
+            - /url: https://webmail.blueviewimoveis.com.br/
+      - img [ref=e1084]:
+        - generic [ref=e1085]: BLUEVIEW
+        - generic [ref=e1086]: BLUEVIEW
+        - generic [ref=e1087]: BLUEVIEW
+  - button "Open Next.js Dev Tools" [ref=e1093] [cursor=pointer]

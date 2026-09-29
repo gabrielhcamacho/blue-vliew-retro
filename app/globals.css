@@ -1,0 +1,250 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Versão retro: o site inteiro é escuro (céu noturno) */
+  --background: #05013a;
+  --foreground: #ffffff;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-space-grotesk);
+
+  /* Blueview brand colors */
+  --color-primary: #0f0392;
+  --color-primary-foreground: #ffffff;
+  /* Azure Pastel da paleta — brilho "neon" da versão retrofuturista */
+  --color-azure: #76d3f6;
+  /* Céu noturno da versão retro (fundos escuros) */
+  --color-night: #05013a;
+  --color-night-soft: #0a0450;
+  /* Tokens shadcn usados pelos componentes de /components/ui */
+  --color-card: #0b0560;
+  --color-card-foreground: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.06);
+  --color-muted-foreground: rgba(255, 255, 255, 0.62);
+  --color-border: rgba(118, 211, 246, 0.18);
+  --color-primary-dark: #0a0270;
+  --color-primary-light: #ecebfa;
+  --color-primary-muted: #d6d3f5;
+  /* Laranja da marca — reservado para botões/CTAs */
+  --color-accent: #ff751f;
+  --color-accent-dark: #e85f0c;
+  --color-accent-light: #fff0e6;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Keyframes (fora de @layer para ficarem disponíveis globalmente) ─── */
+@keyframes shimmer-run {
+  from { left: -80%; }
+  to   { left: 130%; }
+}
+
+/* Granulado de filme sobre o vídeo do hero (textura retrô) */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* Linhas de varredura de monitor CRT */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Grade em perspectiva estilo synthwave (fundo das seções escuras) */
+.retro-grid {
+  background-image:
+    linear-gradient(rgba(118, 211, 246, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 211, 246, 0.10) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+}
+
+/* Link de menu retrô: o texto "rola" para cima e dá lugar a uma cópia em azure, enquanto
+   uma linha em degradê (azure → salmão) cresce do centro. Use com data-text="Rótulo". */
+.nav-roll {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: 0.25rem;
+}
+.nav-roll > .nav-roll-text {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-roll > .nav-roll-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.75rem);
+  color: var(--color-azure);
+  text-shadow: 0 0 12px rgba(118, 211, 246, 0.6);
+}
+.nav-roll::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-azure), var(--color-accent));
+  box-shadow: 0 0 8px rgba(255, 117, 31, 0.7);
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-roll:hover > .nav-roll-text,
+.nav-roll:focus-visible > .nav-roll-text,
+.nav-roll[aria-current='page'] > .nav-roll-text {
+  transform: translateY(calc(-100% - 0.75rem));
+}
+.nav-roll:hover::before,
+.nav-roll:focus-visible::before,
+.nav-roll[aria-current='page']::before {
+  left: 0;
+  right: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-roll > .nav-roll-text,
+  .nav-roll::before { transition: none; }
+}
+
+/* Horizonte das páginas internas (components/ui/sea-horizon.tsx): o brilho e os reflexos
+   surgem uma vez, abrindo do centro, e param. */
+@keyframes horizon-in {
+  from { opacity: 0; transform: scaleX(0.55); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+.horizon-in {
+  animation: horizon-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .horizon-in { animation: none; }
+}
+
+/* Títulos das páginas internas na fonte display da versão retro. Fica na camada base para
+   que classes como tracking-[-0.05em] num título específico prevaleçam. */
+@layer base {
+  main h1,
+  main h2,
+  main h3 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Preserve blank lines (empty paragraphs) generated by the rich text editor */
+.prose p:empty {
+  min-height: 1em;
+}
+
+@layer components {
+  /* Cursor global */
+  button, a, [role="button"], select,
+  label[for], input[type="checkbox"], input[type="radio"] {
+    cursor: pointer;
+  }
+
+  /* ── btn-primary ──────────────────────────────────────
+     Botões laranja preenchidos (Buscar, Falar no WhatsApp)
+     Hover: escurece + sobe 1px + shimmer diagonal        */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background-color: #ff751f;
+    color: #ffffff;
+    transition: background-color 0.28s ease, transform 0.2s ease, box-shadow 0.28s ease;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -80%;
+    width: 55%;
+    height: 220%;
+    background: linear-gradient(
+      105deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 75%
+    );
+    transform: skewX(-18deg);
+    pointer-events: none;
+  }
+  .btn-primary:hover {
+    background-color: #e85f0c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(232, 95, 12, 0.38);
+  }
+  .btn-primary:hover::after {
+    animation: shimmer-run 0.55s ease forwards;
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* ── btn-outline ─────────────────────────────────────
+     Botões com borda laranja (Ver detalhes)
+     Hover: laranja preenche da esquerda via gradient trick */
+  .btn-outline {
+    position: relative;
+    border: 1.5px solid #ff751f;
+    color: #ff751f;
+    background-image: linear-gradient(to right, #ff751f 50%, transparent 50%);
+    background-size: 205% 100%;
+    background-position: 100% center;
+    transition:
+      background-position 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.38s ease,
+      box-shadow 0.28s ease;
+  }
+  .btn-outline:hover {
+    background-position: 0% center;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(255, 117, 31, 0.28);
+  }
+
+  /* ── btn-white ──────────────────────────────────────
+     Botões brancos sobre fundos escuros (cards CTA)
+     Hover: sobe 2px + sombra ampliada                  */
+  .btn-white {
+    background-color: #ffffff;
+    color: #ff751f;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  }
+  .btn-white:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}

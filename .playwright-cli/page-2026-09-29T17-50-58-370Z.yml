@@ -1,0 +1,81 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Blog Blog" [ref=e6] [cursor=pointer]:
+          - /url: /blog
+        - link "Sobre Sobre" [ref=e8] [cursor=pointer]:
+          - /url: /sobre
+        - button "Ver imóveis Ver imóveis" [ref=e11] [cursor=pointer]
+        - link "Área do investidor Área do investidor" [ref=e15] [cursor=pointer]:
+          - /url: /investir
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /
+        - img "Blueview Imóveis" [ref=e19]
+      - generic [ref=e20]:
+        - link "Meus favoritos Meus favoritos" [ref=e21] [cursor=pointer]:
+          - /url: /favoritos
+        - link [ref=e25] [cursor=pointer]:
+          - /url: /contato
+  - main [ref=e30]
+  - contentinfo [ref=e153]:
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - link [ref=e158] [cursor=pointer]:
+              - /url: /
+              - img "Blueview Imóveis" [ref=e159]
+            - paragraph [ref=e160]: Transformando oportunidades do mercado imobiliário em patrimônio, rentabilidade e qualidade de vida.
+          - generic [ref=e161]:
+            - heading "[ Imóveis ]" [level=3] [ref=e162]
+            - list [ref=e163]:
+              - listitem [ref=e164]:
+                - link "Imóveis à venda Imóveis à venda" [ref=e165] [cursor=pointer]:
+                  - /url: /imoveis?purpose=venda
+              - listitem [ref=e167]:
+                - link "Imóveis para alugar Imóveis para alugar" [ref=e168] [cursor=pointer]:
+                  - /url: /imoveis?purpose=aluguel
+              - listitem [ref=e170]:
+                - link "Apartamentos Apartamentos" [ref=e171] [cursor=pointer]:
+                  - /url: /imoveis?property_type=apartamento
+              - listitem [ref=e173]:
+                - link "Casas Casas" [ref=e174] [cursor=pointer]:
+                  - /url: /imoveis?property_type=casa
+              - listitem [ref=e176]:
+                - link "Terrenos Terrenos" [ref=e177] [cursor=pointer]:
+                  - /url: /imoveis?property_type=terreno
+              - listitem [ref=e179]:
+                - link "Lançamentos Lançamentos" [ref=e180] [cursor=pointer]:
+                  - /url: /imoveis?status_imovel=lancamento
+          - generic [ref=e182]:
+            - heading "[ Blueview ]" [level=3] [ref=e183]
+            - list [ref=e184]:
+              - listitem [ref=e185]:
+                - link "Sobre a Blueview Sobre a Blueview" [ref=e186] [cursor=pointer]:
+                  - /url: /sobre
+              - listitem [ref=e188]:
+                - link "Blog Blog" [ref=e189] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e191]:
+                - link "Área do investidor Área do investidor" [ref=e192] [cursor=pointer]:
+                  - /url: /investir
+              - listitem [ref=e194]:
+                - link "Meus favoritos Meus favoritos" [ref=e195] [cursor=pointer]:
+                  - /url: /favoritos
+              - listitem [ref=e197]:
+                - link "Contato Contato" [ref=e198] [cursor=pointer]:
+                  - /url: /contato
+          - generic [ref=e200]:
+            - heading "[ Contato ]" [level=3] [ref=e201]
+            - list [ref=e202]:
+              - listitem [ref=e203]: Segunda a domingo, das 8h às 19h
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: © 2026 Blueview Imóveis. Todos os direitos reservados.
+          - link "Webmail Corretor" [ref=e210] [cursor=pointer]:
+            - /url: https://webmail.blueviewimoveis.com.br/
+      - img [ref=e219]:
+        - generic [ref=e220]: BLUEVIEW
+        - generic [ref=e221]: BLUEVIEW
+        - generic [ref=e222]: BLUEVIEW
+  - button "Open Next.js Dev Tools" [ref=e228] [cursor=pointer]

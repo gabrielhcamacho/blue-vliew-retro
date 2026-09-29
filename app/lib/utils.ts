@@ -27,6 +27,11 @@ export function propertyTypeLabel(type: string): string {
     sala_comercial: 'Sala Comercial',
     loja: 'Loja',
     galpao: 'Galpão',
+    penthouse: 'Penthouse',
+    duplex: 'Duplex',
+    garden: 'Garden',
+    decorado: 'Decorado',
+    diferenciado: 'Diferenciado',
   };
   return labels[type] || type;
 }

@@ -248,3 +248,59 @@ body {
     box-shadow: none;
   }
 }
+
+/* Troca de foto e abertura dos painéis da página do imóvel: um fade curto, uma vez. */
+@keyframes photo-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.photo-in {
+  animation: photo-in 0.28s ease-out both;
+}
+@keyframes sheet-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.sheet-in {
+  animation: sheet-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-in,
+  .sheet-in {
+    animation: none;
+  }
+}
+
+/*
+ * Página do imóvel no mobile: a barra fixa de preço e contato substitui o botão flutuante do
+ * WhatsApp (evita dois botões de contato empilhados) e o fim da página ganha espaço para o
+ * rodapé não ficar escondido atrás da barra.
+ */
+@media (max-width: 1023px) {
+  body:has([data-property-bar]) [data-wa-float] {
+    display: none;
+  }
+  body:has([data-property-bar]) {
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Popup do mapa do imóvel (MapLibre): botão de fechar legível sobre o tema do site. */
+.maplibregl-popup .maplibregl-popup-close-button {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: #475569;
+  background: transparent;
+}
+.maplibregl-popup .maplibregl-popup-close-button:hover {
+  background: #f1f5f9;
+}
+.maplibregl-popup .maplibregl-popup-close-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}

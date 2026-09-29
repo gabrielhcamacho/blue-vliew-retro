@@ -13,6 +13,7 @@ export default function WhatsAppFloatButton({ whatsapp }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
+      data-wa-float
       className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform"
       style={{ backgroundColor: '#25D366', boxShadow: '0 6px 20px rgba(0,0,0,0.3)' }}
     >

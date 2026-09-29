@@ -1,3 +1,10 @@
+/** Bloco de características do DWV: `type` é "Apartamento" (unidade) ou "Empreendimento". */
+export interface FeatureBlock {
+  tags?: string[];
+  titles?: string[];
+  type?: string;
+}
+
 export interface Property {
   id: string;
   property_code?: string;
@@ -33,8 +40,9 @@ export interface Property {
   barter_description?: string;
   cleaning_fee?: number;
   service_fee?: number;
-  unit_features?: string[];
-  building_features?: string[];
+  /** Tags do cadastro próprio (strings) ou blocos do DWV `{ tags, titles, type }`. */
+  unit_features?: (string | FeatureBlock)[] | null;
+  building_features?: (string | FeatureBlock)[] | null;
   created_at: string;
   updated_at: string;
 }

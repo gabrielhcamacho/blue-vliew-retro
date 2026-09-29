@@ -177,12 +177,15 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
 // quiser valores fixos que tenham precedência sobre ele.
 const CONTENT_OVERRIDES = {
   hero_title: 'Viva com vista para o mar',
+  // Todos os links de WhatsApp do site (botão flutuante, cabeçalho, rodapé, contato, imóvel) usam este número.
+  whatsapp: '+55 47 98818-1146',
 };
 
 function withContentOverrides(cfg: SiteConfig): SiteConfig {
   return {
     ...cfg,
     hero_title: CONTENT_OVERRIDES.hero_title,
+    whatsapp: CONTENT_OVERRIDES.whatsapp,
   };
 }
 

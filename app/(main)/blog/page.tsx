@@ -6,7 +6,7 @@ import { LineReveal } from '@/components/ui/line-reveal';
 
 export const metadata: Metadata = {
   title: 'Blog | Blueview Imóveis',
-  description: 'Conteúdo sobre o mercado imobiliário de Itapema e região. Tendências, análises e oportunidades exclusivas.',
+  description: 'Conteúdo sobre o mercado imobiliário de Balneário Camboriú e região. Tendências, análises e oportunidades exclusivas.',
 };
 
 interface PageProps {
@@ -84,7 +84,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-12">
         {posts.length === 0 ? (
           <div className="border-y border-white/10 py-20 text-center">
-            <p className="text-white/45 text-lg">Em breve, conteúdo exclusivo sobre o mercado imobiliário de Itapema e região.</p>
+            <p className="text-white/45 text-lg">Em breve, conteúdo exclusivo sobre o mercado imobiliário de Balneário Camboriú e região.</p>
           </div>
         ) : (
           <>

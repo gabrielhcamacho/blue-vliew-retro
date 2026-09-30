@@ -21,7 +21,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Blueview Imóveis | Imóveis em Itapema e Região",
+    default: "Blueview Imóveis | Imóveis em Balneário Camboriú e Região",
     template: "%s | Blueview Imóveis",
   },
   description:

@@ -12,7 +12,7 @@ import type { Property, PropertyFilters as Filters } from '@/app/lib/types';
 export const metadata: Metadata = {
   title: 'Imóveis à Venda e para Alugar | Blueview Imóveis',
   description:
-    'Explore o portfólio completo da Blueview: apartamentos de alto padrão, coberturas, gardens e lançamentos em Itapema e região.',
+    'Explore o portfólio completo da Blueview: apartamentos de alto padrão, coberturas, gardens e lançamentos em Balneário Camboriú e região.',
 };
 
 // ─── Decoders (same as before) ────────────────────────────────────────────────

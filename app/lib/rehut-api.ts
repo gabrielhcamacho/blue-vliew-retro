@@ -198,7 +198,7 @@ export async function fetchSiteConfig(): Promise<SiteConfig> {
     branches: [],
     creci: '',
     hero_title: CONTENT_OVERRIDES.hero_title,
-    hero_subtitle: 'Imobiliária em Itapema e região',
+    hero_subtitle: 'Imobiliária em Balneário Camboriú e região',
     social_links: {},
     hero_images: [],
   };

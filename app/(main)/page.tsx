@@ -9,9 +9,10 @@ import AnimatedSection from '@/app/components/AnimatedSection';
 import PropertyCarousel from '@/app/components/PropertyCarousel';
 
 export const metadata: Metadata = {
-  title: 'Blueview Imóveis | Alto Padrão em Itapema e região',
+  // absolute: o template do layout ("%s | Blueview Imóveis") repetiria o nome da marca.
+  title: { absolute: 'Blueview Imóveis | Alto Padrão em Balneário Camboriú e região' },
   description:
-    'Especialistas em imóveis de alto padrão em Itapema e região. Apartamentos, coberturas e lançamentos exclusivos no litoral catarinense.',
+    'Especialistas em imóveis de alto padrão em Balneário Camboriú e região. Apartamentos, coberturas e lançamentos exclusivos no litoral catarinense.',
 };
 
 const heroNav: PrismaHeroNavItem[] = [
@@ -128,7 +129,7 @@ export default async function HomePage() {
               title={lancamentos.length > 0 ? 'Lançamentos' : 'Mais imóveis'}
               subtitle={
                 lancamentos.length > 0
-                  ? 'Os melhores lançamentos de Itapema e região'
+                  ? 'Os melhores lançamentos de Balneário Camboriú e região'
                   : 'Explore mais opções do nosso portfólio'
               }
               viewAllHref={

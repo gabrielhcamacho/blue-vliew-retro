@@ -176,7 +176,7 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
 // Contatos, filiais e redes sociais vêm do CRM; preencha aqui apenas se a Blueview
 // quiser valores fixos que tenham precedência sobre ele.
 const CONTENT_OVERRIDES = {
-  hero_title: 'Viva com vista para o mar',
+  hero_title: 'A visão certa para o seu próximo investimento',
   // Todos os links de WhatsApp do site (botão flutuante, cabeçalho, rodapé, contato, imóvel) usam este número.
   whatsapp: '+55 47 98818-1146',
 };

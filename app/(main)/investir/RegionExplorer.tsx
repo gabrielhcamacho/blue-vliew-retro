@@ -8,7 +8,7 @@ import { REGIONS } from '@/app/lib/regions';
 
 /** Abas das regiões acompanhadas: a escolhida revela a leitura de mercado e a posição na costa. */
 export default function RegionExplorer() {
-  const [active, setActive] = useState(2); // começa por Itapema
+  const [active, setActive] = useState(2); // começa por Balneário Camboriú
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const id = useId();
   const reduceMotion = useReducedMotion();

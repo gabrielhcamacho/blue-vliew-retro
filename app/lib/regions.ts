@@ -25,7 +25,16 @@ export const REGIONS: Region[] = [
     market:
       'Vizinha de Balneário Camboriú, com orla menos adensada e empreendimentos de perfil mais reservado. Localização e vista pesam muito na escolha da unidade.',
     map: { x: 214, y: 70 },
-    href: '/imoveis?search=Praia%20Brava',
+    href: '/imoveis?city=Itaja%C3%AD&bairro=Praia%20Brava',
+  },
+  {
+    name: 'Itajaí',
+    coords: '26°54′S 48°40′W',
+    short: 'Cidade portuária e polo econômico do litoral, vizinha de Balneário Camboriú, com bairros residenciais consolidados.',
+    market:
+      'Cidade vizinha de Balneário Camboriú, com bairros residenciais consolidados e novos empreendimentos em diferentes regiões. Cada bairro tem sua dinâmica e pede leitura própria.',
+    map: { x: 205, y: 34 },
+    href: '/imoveis?city=Itaja%C3%AD',
   },
   {
     name: 'Balneário Camboriú',
@@ -34,24 +43,15 @@ export const REGIONS: Region[] = [
     market:
       'Mercado consolidado e de alta densidade, com torres à beira-mar e forte presença de construtoras reconhecidas. Aqui a leitura é de endereço, andar e posição da unidade.',
     map: { x: 196, y: 150 },
-    href: '/imoveis?search=Balne%C3%A1rio%20Cambori%C3%BA',
-  },
-  {
-    name: 'Itapema',
-    coords: '27°05′S 48°36′W',
-    short: 'Meia Praia e a orla central reúnem boa parte dos lançamentos de alto padrão da região.',
-    market:
-      'Concentra muitos dos lançamentos de alto padrão da região, sobretudo em Meia Praia. Escolher construtora, fase da obra e momento de entrada faz diferença.',
-    map: { x: 176, y: 292 },
-    href: '/imoveis?search=Itapema',
+    href: '/imoveis?city=Balne%C3%A1rio%20Cambori%C3%BA',
   },
   {
     name: 'Porto Belo',
     coords: '27°09′S 48°33′W',
-    short: 'Enseada de águas calmas e ritmo mais tranquilo, a poucos minutos de Itapema.',
+    short: 'Enseada de águas calmas e ritmo mais tranquilo, ao sul de Itapema.',
     market:
-      'Enseada calma e ritmo mais residencial, ao lado de Itapema. Atrai quem busca o litoral com menos adensamento, e cada empreendimento pede leitura própria.',
+      'Enseada calma e ritmo mais residencial, ao sul de Itapema. Atrai quem busca o litoral com menos adensamento, e cada empreendimento pede leitura própria.',
     map: { x: 250, y: 392 },
-    href: '/imoveis?search=Porto%20Belo',
+    href: '/imoveis?city=Porto%20Belo',
   },
 ];

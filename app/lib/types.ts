@@ -123,6 +123,7 @@ export interface PropertyFilters {
   purpose?: string;
   property_type?: string;
   city?: string;
+  bairro?: string;         // bairro dentro da cidade escolhida
   bedrooms?: string;
   min_price?: string;
   max_price?: string;
@@ -130,10 +131,10 @@ export interface PropertyFilters {
   page?: string;
   limit?: string;
   // Blueview-specific filters (client-side)
-  tipologia?: string;      // e.g. "1s", "1s2d", "2s"
+  tipologia?: string;      // quartos: "q1".."q4" (4 = 4 ou mais); legado: "1s", "1s2d", "2s"
   metragem?: string;       // e.g. "ate50", "50_100", "acima300"
   tipo_apt?: string;       // e.g. "flat", "duplex", "cobertura", "garden"
-  status_imovel?: string;  // e.g. "lancamento", "construcao", "pronto"
+  status_imovel?: string;  // e.g. "na_planta" (lançamento + em construção), "pronto"
   regiao?: string;         // e.g. "frente_mar", "quadra_mar"
   faixa_preco?: string;    // e.g. "ate500", "500_1000", "acima10000"
   sort?: string;

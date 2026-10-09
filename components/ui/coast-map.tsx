@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Linha costeira esquemática de Praia Brava a Porto Belo (norte para cima, mar a leste).
+ * Linha costeira esquemática de Itajaí a Porto Belo (norte para cima, mar a leste).
  * Não é cartografia: é o desenho simplificado das enseadas, com a península de Porto Belo.
  */
 const COAST =
@@ -30,7 +30,7 @@ export function CoastMap({ className }: { className?: string }) {
     <svg
       viewBox="0 0 400 480"
       role="img"
-      aria-label="Mapa esquemático do litoral com Praia Brava, Balneário Camboriú, Itapema e Porto Belo"
+      aria-label="Mapa esquemático do litoral com Itajaí, Praia Brava, Balneário Camboriú e Porto Belo"
       className={cn('overflow-visible', className)}
       fill="none"
     >
@@ -115,7 +115,7 @@ export function CoastMap({ className }: { className?: string }) {
 
       {/* Percurso entre as regiões: a leitura de mercado que liga um ponto ao outro */}
       <motion.path
-        d={REGIONS.map((r, i) => `${i ? 'L' : 'M'}${r.map.x + 34} ${r.map.y}`).join(' ')}
+        d={[...REGIONS].sort((a, b) => a.map.y - b.map.y).map((r, i) => `${i ? 'L' : 'M'}${r.map.x + 34} ${r.map.y}`).join(' ')}
         stroke="#ff751f"
         strokeWidth={0.8}
         strokeDasharray="1 6"

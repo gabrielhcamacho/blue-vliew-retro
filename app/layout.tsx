@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Blueview Imóveis",
   },
   description:
-    "Transformando oportunidades do mercado imobiliário em patrimônio. Imóveis de médio e alto padrão em Itapema, Porto Belo, Balneário Camboriú e Praia Brava.",
+    "Transformando oportunidades do mercado imobiliário em patrimônio. Imóveis de médio e alto padrão em Praia Brava, Itajaí, Balneário Camboriú e Porto Belo.",
   metadataBase: new URL("https://blueviewimoveis.com.br"),
 };
 

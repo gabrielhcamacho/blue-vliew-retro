@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { fetchAllProperties } from '@/app/lib/rehut-api';
 import { normalizeText } from '@/app/lib/utils';
+import { matchesBairro } from '@/app/lib/locations';
+import { propertyStage } from '@/app/lib/property-details';
 import PropertyCard from '@/app/components/PropertyCard';
 import PropertyFilterBar from '@/app/components/PropertyFilterBar';
 import FeatureChips, { type FeatureChip } from '@/app/components/FeatureChips';
@@ -31,6 +33,22 @@ function decodeFaixaPreco(faixa: string): { min?: number; max?: number } {
     case 'acima10000':  return { min: 10_000_001 };
     default:            return {};
   }
+}
+
+/** Quartos: "q1".."q4" (4 = quatro ou mais). Conta o total de quartos, suítes incluídas. */
+function decodeQuartos(tip: string): number | null {
+  const m = tip.match(/^q(\d)$/);
+  return m ? parseInt(m[1]) : null;
+}
+
+function totalQuartos(p: Property): number {
+  return Math.max(p.bedrooms ?? 0, p.suites ?? 0);
+}
+
+/** "Na Planta" reúne lançamento e em construção. */
+function isNaPlanta(p: Pick<Property, 'property_situation'>): boolean {
+  const stage = propertyStage(p.property_situation);
+  return stage === 'lancamento' || stage === 'construcao';
 }
 
 function decodeTipologia(tip: string): { suites: number; extraBedrooms: number } | null {
@@ -73,7 +91,14 @@ function applyFilters(properties: Property[], params: Filters): Property[] {
     }
   }
 
-  if (params.tipologia) {
+  if (params.bairro) {
+    list = list.filter((p) => matchesBairro(p.neighborhood, params.bairro!));
+  }
+
+  const quartos = params.tipologia ? decodeQuartos(params.tipologia) : null;
+  if (quartos !== null) {
+    list = list.filter((p) => (quartos >= 4 ? totalQuartos(p) >= 4 : totalQuartos(p) === quartos));
+  } else if (params.tipologia) {
     const tip = decodeTipologia(params.tipologia);
     if (tip) {
       list = list.filter((p) => {
@@ -102,7 +127,9 @@ function applyFilters(properties: Property[], params: Filters): Property[] {
     );
   }
 
-  if (params.status_imovel) {
+  if (params.status_imovel === 'na_planta') {
+    list = list.filter(isNaPlanta);
+  } else if (params.status_imovel) {
     // Sem acento dos dois lados: a API devolve `lancamento`/`construcao`, mas a situação
     // digitada no CRM pode vir acentuada.
     const val = normalizeText(params.status_imovel.replace(/_/g, ' '));
@@ -158,6 +185,10 @@ function countBySituation(all: Property[], situation: string): number {
   return all.filter((p) => normalizeText(p.property_situation).includes(target)).length;
 }
 
+function countNaPlanta(all: Property[]): number {
+  return all.filter(isNaPlanta).length;
+}
+
 function countByType(all: Property[], type: string): number {
   return all.filter((p) => (p.property_type ?? '').toLowerCase() === type).length;
 }
@@ -194,7 +225,7 @@ export default async function ImoveisPage({ searchParams }: PageProps) {
   }
 
   const activeCount = [
-    'search', 'city', 'tipologia', 'metragem', 'tipo_apt',
+    'search', 'city', 'bairro', 'tipologia', 'metragem', 'tipo_apt',
     'status_imovel', 'regiao', 'faixa_preco',
   ].filter((k) => !!(params as Record<string, string>)[k]).length;
 
@@ -202,10 +233,10 @@ export default async function ImoveisPage({ searchParams }: PageProps) {
   const featureChips: FeatureChip[] = [
     { label: 'Frente Mar',      param: 'regiao',       value: 'frente_mar',       count: countByRegiao(raw.data, 'frente_mar') },
     { label: 'Quadra Mar',      param: 'regiao',       value: 'quadra_mar',       count: countByRegiao(raw.data, 'quadra_mar') },
-    { label: 'Lançamento',      param: 'status_imovel', value: 'lancamento',      count: countBySituation(raw.data, 'lancamento') },
+    { label: 'Na Planta',       param: 'status_imovel', value: 'na_planta',       count: countNaPlanta(raw.data) },
+    { label: 'Pronto',          param: 'status_imovel', value: 'pronto',          count: countBySituation(raw.data, 'pronto') },
     { label: 'Cobertura',       param: 'tipo_apt',     value: 'cobertura',        count: countByType(raw.data, 'cobertura') },
     { label: 'Garden',          param: 'tipo_apt',     value: 'garden',           count: countByType(raw.data, 'garden') },
-    { label: 'Em Construção',   param: 'status_imovel', value: 'construcao',      count: countBySituation(raw.data, 'construcao') },
   ];
 
   return (

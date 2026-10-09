@@ -5,33 +5,51 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { BeamSearch } from '@/components/ui/beam-search';
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
+import { LOCATIONS } from '@/app/lib/locations';
 
 // ─── Filter definitions ───────────────────────────────────────────────────────
 
-const filterGroups = [
+interface FilterOption {
+  label: string;
+  value: string;
+  /** Outros parâmetros definidos junto (bairro → cidade). */
+  set?: Record<string, string>;
+  /** Parâmetros limpos ao escolher (cidade → solta o bairro). */
+  clears?: string[];
+}
+
+interface FilterSection {
+  title: string;
+  param: string;
+  options: FilterOption[];
+}
+
+interface FilterGroup {
+  id: string;
+  label: string;
+  params: string[];
+  sections: FilterSection[];
+}
+
+const filterGroups: FilterGroup[] = [
   {
     id: 'localizacao',
     label: 'Localização',
-    params: ['city', 'regiao'],
+    params: ['city', 'bairro'],
     sections: [
       {
         title: 'Cidade',
         param: 'city',
         options: [
-          { label: 'Itapema', value: 'Itapema' },
-          { label: 'Balneário Camboriú', value: 'Balneário Camboriú' },
+          { label: 'Todas as cidades', value: '', clears: ['bairro'] },
+          ...LOCATIONS.map(({ city }) => ({ label: city, value: city, clears: ['bairro'] })),
         ],
       },
-      {
-        title: 'Região',
-        param: 'regiao',
-        options: [
-          { label: 'Frente Mar', value: 'frente_mar' },
-          { label: 'Quadra Mar', value: 'quadra_mar' },
-          { label: 'Segunda Quadra', value: 'segunda_quadra' },
-          { label: 'Terceira Quadra', value: 'terceira_quadra' },
-        ],
-      },
+      ...LOCATIONS.filter((l) => l.bairros.length > 0).map((l) => ({
+        title: l.city,
+        param: 'bairro',
+        options: l.bairros.map((b) => ({ label: b, value: b, set: { city: l.city } })),
+      })),
     ],
   },
   {
@@ -62,8 +80,7 @@ const filterGroups = [
         title: 'Status',
         param: 'status_imovel',
         options: [
-          { label: 'Lançamento', value: 'lancamento' },
-          { label: 'Em Construção', value: 'construcao' },
+          { label: 'Na Planta', value: 'na_planta' },
           { label: 'Pronto', value: 'pronto' },
           { label: 'Pronto Mobiliado', value: 'pronto_mobiliado' },
         ],
@@ -72,19 +89,17 @@ const filterGroups = [
   },
   {
     id: 'tipologia',
-    label: 'Tipologia',
+    label: 'Quartos',
     params: ['tipologia'],
     sections: [
       {
-        title: 'Suítes',
+        title: 'Quartos',
         param: 'tipologia',
         options: [
-          { label: '1 Suíte', value: '1s' },
-          { label: '1 Suíte + 1 Dorm.', value: '1s1d' },
-          { label: '2 Suítes', value: '2s' },
-          { label: '3 Suítes', value: '3s' },
-          { label: '4 Suítes', value: '4s' },
-          { label: '5 Suítes', value: '5s' },
+          { label: '1 quarto', value: 'q1' },
+          { label: '2 quartos', value: 'q2' },
+          { label: '3 quartos', value: 'q3' },
+          { label: '4 quartos ou mais', value: 'q4' },
         ],
       },
     ],
@@ -133,7 +148,7 @@ const filterGroups = [
 ];
 
 const ALL_FILTER_KEYS = [
-  'search', 'city', 'tipologia', 'metragem',
+  'search', 'city', 'bairro', 'tipologia', 'metragem',
   'tipo_apt', 'status_imovel', 'regiao', 'faixa_preco',
 ];
 
@@ -201,23 +216,37 @@ export default function PropertyFilterBar() {
     }
   };
 
-  const toggle = (param: string, value: string) => {
-    navigate({ [param]: get(param) === value ? '' : value });
+  const isSelected = (sec: FilterSection, opt: FilterOption) =>
+    !!opt.value &&
+    get(sec.param) === opt.value &&
+    Object.entries(opt.set ?? {}).every(([k, v]) => get(k) === v);
+
+  const toggle = (sec: FilterSection, opt: FilterOption) => {
+    const updates: Record<string, string> = {};
+    for (const k of opt.clears ?? []) updates[k] = '';
+    if (isSelected(sec, opt)) {
+      updates[sec.param] = '';
+    } else {
+      updates[sec.param] = opt.value;
+      Object.assign(updates, opt.set);
+    }
+    navigate(updates);
     setOpenId(null);
     setDropdownRect(null);
   };
 
   const hasFilters = ALL_FILTER_KEYS.some((k) => !!sp.get(k));
 
-  const getActiveLabel = (group: (typeof filterGroups)[0]) => {
-    for (const sec of group.sections) {
+  // De trás para frente: o bairro (mais específico) vence a cidade no rótulo do botão.
+  const getActiveLabel = (group: FilterGroup) => {
+    for (const sec of [...group.sections].reverse()) {
       const v = get(sec.param);
       if (v) return sec.options.find((o) => o.value === v)?.label ?? null;
     }
     return null;
   };
 
-  const isGroupActive = (group: (typeof filterGroups)[0]) =>
+  const isGroupActive = (group: FilterGroup) =>
     group.params.some((p) => !!get(p));
 
   const openGroup = filterGroups.find((g) => g.id === openId);
@@ -317,11 +346,11 @@ export default function PropertyFilterBar() {
             left: dropdownRect.left,
             zIndex: 9999,
           }}
-          className="bg-card rounded-xl shadow-xl border border-border overflow-hidden min-w-[210px]"
+          className="bg-card rounded-xl shadow-xl border border-border overflow-y-auto max-h-[70vh] min-w-[210px]"
         >
           <div className="p-2">
             {openGroup.sections.map((sec, si) => (
-              <div key={sec.param}>
+              <div key={sec.title}>
                 {openGroup.sections.length > 1 && (
                   <p
                     className={`text-[10px] font-bold text-white/45 uppercase tracking-wider px-2 pb-1 ${
@@ -332,11 +361,11 @@ export default function PropertyFilterBar() {
                   </p>
                 )}
                 {sec.options.map((opt) => {
-                  const selected = get(sec.param) === opt.value;
+                  const selected = isSelected(sec, opt);
                   return (
                     <button
-                      key={opt.value}
-                      onClick={() => toggle(sec.param, opt.value)}
+                      key={`${sec.title}-${opt.value}`}
+                      onClick={() => toggle(sec, opt)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         selected
                           ? 'bg-accent/15 text-[#ff751f] font-semibold'

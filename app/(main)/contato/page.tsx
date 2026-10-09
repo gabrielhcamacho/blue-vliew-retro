@@ -134,8 +134,8 @@ export default async function ContatoPage() {
             <div className="relative">
               <h2 className="text-2xl font-bold mb-4">Encontre o imóvel ideal</h2>
               <p className="text-white/80 leading-relaxed mb-6">
-                Especializada em imóveis de médio e alto padrão em Itapema, Porto Belo,
-                Balneário Camboriú e Praia Brava. Do primeiro contato à escritura, nossa
+                Especializada em imóveis de médio e alto padrão em Praia Brava, Itajaí,
+                Balneário Camboriú e Porto Belo / SC. Do primeiro contato à escritura, nossa
                 equipe acompanha cada etapa.
               </p>
             </div>

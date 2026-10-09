@@ -5,11 +5,9 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, Search } from 'lucide-react';
 import { BeamSearch } from '@/components/ui/beam-search';
 import { cn } from '@/lib/utils';
+import { LOCATIONS } from '@/app/lib/locations';
 
-const cities = [
-  { label: 'Itapema', value: 'Itapema' },
-  { label: 'Balneário Camboriú', value: 'Balneário Camboriú' },
-];
+const cities = LOCATIONS.map(({ city }) => ({ label: city, value: city }));
 
 const propertyTypes = [
   { label: 'Todos os tipos', value: '' },
@@ -18,12 +16,11 @@ const propertyTypes = [
   { label: 'Flat / Studio', value: 'flat' },
   { label: 'Duplex', value: 'duplex' },
   { label: 'Garden', value: 'garden' },
-  { label: 'Terreno', value: 'terreno' },
 ];
 
 const statusOptions = [
   { label: 'Todos', value: '' },
-  { label: 'Na planta', value: 'lancamento' },
+  { label: 'Na planta', value: 'na_planta' },
   { label: 'Mobiliado', value: 'pronto_mobiliado' },
   { label: 'Sem mobília', value: 'pronto' },
 ];

@@ -64,8 +64,10 @@ export default async function HomePage() {
     <div className="bg-night text-white">
       <PrismaHero
         title="Blueview"
+        logoSrc="/logo-blueview-horizontal.png"
         eyebrow="[ Blueview Imóveis ] Litoral catarinense"
-        description={`${configData.hero_title}. Apartamentos, coberturas e lançamentos escolhidos a dedo, com o olhar de quem vive o litoral.`}
+        headline={configData.hero_title}
+        description="Com o olhar de quem vive o litoral. Apartamentos prontos e lançamentos."
         ctaLabel="Ver imóveis"
         ctaHref="/imoveis"
         navItems={heroNav}

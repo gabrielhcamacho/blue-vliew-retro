@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Waves, Building2, Rocket, BedDouble, Crown, Leaf } from 'lucide-react';
+import { Waves, Building2, Rocket, BedDouble, Crown, Leaf, BadgeCheck } from 'lucide-react';
 
 export interface FeatureChip {
   label: string;
@@ -14,6 +14,8 @@ const CHIP_ICONS: Record<string, React.ElementType> = {
   frente_mar:       Waves,
   quadra_mar:       Building2,
   lancamento:       Rocket,
+  na_planta:        Rocket,
+  pronto:           BadgeCheck,
   pronto_mobiliado: BedDouble,
   cobertura:        Crown,
   garden:           Leaf,

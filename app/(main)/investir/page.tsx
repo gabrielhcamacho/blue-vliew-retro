@@ -15,7 +15,7 @@ import RegionExplorer from './RegionExplorer';
 export const metadata: Metadata = {
   title: 'Investimentos Imobiliários | Blueview Imóveis',
   description:
-    'Cadastre-se e receba oportunidades de investimento imobiliário de médio e alto padrão em Itapema, Porto Belo, Balneário Camboriú e Praia Brava.',
+    'Cadastre-se e receba oportunidades de investimento imobiliário de médio e alto padrão em Praia Brava, Itajaí, Balneário Camboriú e Porto Belo.',
 };
 
 const curation = [
@@ -189,7 +189,7 @@ export default async function InvestirPage() {
           </div>
           <AnimatedSection animation="fade-up" className="lg:col-span-5 lg:col-start-8 lg:self-end">
             <p className="text-base leading-relaxed text-white/75">
-              Itapema, Porto Belo, Balneário Camboriú e Praia Brava ficam a poucos quilômetros umas das
+              Praia Brava, Itajaí, Balneário Camboriú e Porto Belo ficam a poucos quilômetros umas das
               outras, mas cada uma tem sua dinâmica. O que decide uma boa compra não é só a região: é a
               construtora, a localização dentro dela e o momento de entrada.
             </p>

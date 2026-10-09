@@ -43,10 +43,7 @@ interface FooterProps {
 
 const propertyLinks = [
   { label: 'Imóveis à venda', href: '/imoveis?purpose=venda' },
-  { label: 'Imóveis para alugar', href: '/imoveis?purpose=aluguel' },
   { label: 'Apartamentos', href: '/imoveis?property_type=apartamento' },
-  { label: 'Casas', href: '/imoveis?property_type=casa' },
-  { label: 'Terrenos', href: '/imoveis?property_type=terreno' },
   { label: 'Lançamentos', href: '/imoveis?status_imovel=lancamento' },
 ];
 
@@ -108,8 +105,7 @@ export default function Footer({ config }: FooterProps) {
                 />
               </Link>
               <p className="max-w-xs text-sm leading-relaxed text-white/60">
-                Transformando oportunidades do mercado imobiliário em patrimônio, rentabilidade e
-                qualidade de vida.
+                A visão certa para o seu próximo investimento
               </p>
               {config?.creci && (
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-azure/70">{config.creci}</p>

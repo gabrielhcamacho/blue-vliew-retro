@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 // Na ordem em que a Blueview apresenta as regiões
-const regionOrder = ['Itapema', 'Porto Belo', 'Balneário Camboriú', 'Praia Brava'];
+const regionOrder = ['Praia Brava', 'Itajaí', 'Balneário Camboriú', 'Porto Belo'];
 const regions = regionOrder.map((name) => REGIONS.find((r) => r.name === name)!);
 
 const steps = [
@@ -73,7 +73,7 @@ export default function SobrePage() {
               Especializada em imóveis de médio e alto padrão, a Blueview conecta investidores e famílias
               aos empreendimentos das construtoras mais sólidas e reconhecidas da região.
             </p>
-            <p className={`${eyebrow} text-white/45`}>27°05′S · 48°36′W · Itapema, SC</p>
+            <p className={`${eyebrow} text-white/45`}>26°59′S · 48°38′W · Balneário Camboriú, SC</p>
           </div>
         </div>
       </section>
@@ -252,7 +252,7 @@ export default function SobrePage() {
         />
 
         <AnimatedSection animation="fade-up" className="relative mx-auto max-w-3xl text-center">
-          <p className={`${eyebrow} mb-5 text-azure`}>Blueview Imóveis. Viva com vista para o mar.</p>
+          <p className={`${eyebrow} mb-5 text-azure`}>Blueview Imóveis. A visão certa para o seu próximo investimento.</p>
           <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] font-medium leading-[1] tracking-[-0.045em]">
             Vamos conversar sobre o seu próximo <span className="text-accent">endereço</span> no litoral?
           </h2>

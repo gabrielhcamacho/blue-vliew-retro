@@ -97,6 +97,10 @@ export interface PrismaHeroNavItem {
 
 interface PrismaHeroProps {
   title: string;
+  /** Logo grande no lugar do título em texto (o título segue como texto alternativo). */
+  logoSrc?: string;
+  /** Frase de destaque, em fonte maior que a descrição. */
+  headline?: string;
   description: string;
   eyebrow?: string;
   ctaLabel: string;
@@ -108,6 +112,8 @@ interface PrismaHeroProps {
 
 const PrismaHero = ({
   title,
+  logoSrc,
+  headline,
   description,
   eyebrow,
   ctaLabel,
@@ -180,9 +186,30 @@ const PrismaHero = ({
         <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 sm:px-6 md:px-10">
           <div className="grid grid-cols-12 items-end gap-4">
             <div className="col-span-12 lg:col-span-8">
-              <h1 className="font-display font-medium leading-[0.85] tracking-[-0.07em] text-white text-[22vw] sm:text-[21vw] lg:text-[14vw]">
-                <WordsPullUp text={title} />
-              </h1>
+              {logoSrc ? (
+                <h1 className="pb-2 lg:pb-6">
+                  <motion.span
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: EASE }}
+                    className="block"
+                  >
+                    <Image
+                      src={logoSrc}
+                      alt={title}
+                      width={1600}
+                      height={234}
+                      sizes="(min-width: 1024px) 60vw, 94vw"
+                      className="h-auto w-full"
+                      priority
+                    />
+                  </motion.span>
+                </h1>
+              ) : (
+                <h1 className="font-display font-medium leading-[0.85] tracking-[-0.07em] text-white text-[22vw] sm:text-[21vw] lg:text-[14vw]">
+                  <WordsPullUp text={title} />
+                </h1>
+              )}
             </div>
 
             <div className="relative z-10 col-span-12 flex flex-col gap-5 pb-6 lg:col-span-4 lg:pb-10">
@@ -194,6 +221,17 @@ const PrismaHero = ({
                   className="font-mono text-[10px] uppercase tracking-[0.25em] text-azure sm:text-xs"
                 >
                   {eyebrow}
+                </motion.p>
+              )}
+
+              {headline && (
+                <motion.p
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
+                  className="font-display text-2xl font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-3xl md:text-4xl"
+                >
+                  {headline}
                 </motion.p>
               )}
 

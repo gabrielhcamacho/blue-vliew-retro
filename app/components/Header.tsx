@@ -11,7 +11,6 @@ import { whatsappUrl } from '@/app/lib/utils';
 const propertyCategories = [
   { label: 'Todo o portfólio', href: '/imoveis' },
   { label: 'Imóveis à venda', href: '/imoveis?purpose=venda' },
-  { label: 'Imóveis para alugar', href: '/imoveis?purpose=aluguel' },
   { label: 'Lançamentos', href: '/imoveis?status_imovel=lancamento' },
   { label: 'Coberturas', href: '/imoveis?tipo_apt=cobertura' },
   { label: 'Investimentos', href: '/investir' },

@@ -3,18 +3,15 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { LOCATIONS } from '@/app/lib/locations';
 
 // ─── Filter definitions ───────────────────────────────────────────────────────
 
 const tipologias = [
-  { label: '1 Suíte', value: '1s' },
-  { label: '1 Suíte + 1 Dormitório', value: '1s1d' },
-  { label: '1 Suíte + 2 Dormitórios', value: '1s2d' },
-  { label: '1 Suíte + 3 Dormitórios', value: '1s3d' },
-  { label: '2 Suítes', value: '2s' },
-  { label: '3 Suítes', value: '3s' },
-  { label: '4 Suítes', value: '4s' },
-  { label: '5 Suítes', value: '5s' },
+  { label: '1 quarto', value: 'q1' },
+  { label: '2 quartos', value: 'q2' },
+  { label: '3 quartos', value: 'q3' },
+  { label: '4 quartos ou mais', value: 'q4' },
 ];
 
 const metragens = [
@@ -36,16 +33,12 @@ const tiposApt = [
 ];
 
 const statusOptions = [
-  { label: 'Lançamento', value: 'lancamento' },
-  { label: 'Em Construção', value: 'construcao' },
+  { label: 'Na Planta', value: 'na_planta' },
   { label: 'Pronto sem Mobília', value: 'pronto' },
   { label: 'Pronto Mobiliado', value: 'pronto_mobiliado' },
 ];
 
-const cidadeOptions = [
-  { label: 'Itapema', value: 'Itapema' },
-  { label: 'Balneário Camboriú', value: 'Balneário Camboriú' },
-];
+const cidadeOptions = LOCATIONS.map(({ city }) => ({ label: city, value: city }));
 
 const regiaoOptions = [
   { label: 'Frente Mar', value: 'frente_mar' },
@@ -215,7 +208,7 @@ export default function PropertyFilters() {
       </Section>
 
       {/* Tipologias */}
-      <Section title="Tipologias">
+      <Section title="Quartos">
         <RadioList
           options={tipologias}
           param="tipologia"

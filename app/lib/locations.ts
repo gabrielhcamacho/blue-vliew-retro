@@ -15,7 +15,7 @@ export const LOCATIONS: CityLocation[] = [
   },
   {
     city: 'Itajaí',
-    bairros: ['Dom Bosco', 'São João', 'São Judas', 'Praia Brava', 'Fazenda', 'Fazendinha', 'Centro', 'Cabeçudas'],
+    bairros: ['Dom Bosco', 'Praia Brava', 'Fazenda', 'Fazendinha', 'Centro', 'Cabeçudas'],
   },
   { city: 'Porto Belo', bairros: [] },
 ];

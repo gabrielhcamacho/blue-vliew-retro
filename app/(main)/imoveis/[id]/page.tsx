@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata, Viewport } from 'next';
 import { ArrowLeft, ArrowUpRight, ChevronDown, MapPin } from 'lucide-react';
 import { fetchPropertyById, fetchProperties, fetchSiteConfig } from '@/app/lib/rehut-api';
-import { formatArea, formatCurrency, propertyTypeLabel, purposeLabel } from '@/app/lib/utils';
+import { formatArea, formatCurrency, propertyDisplayCode, propertyTypeLabel, purposeLabel } from '@/app/lib/utils';
 import { probeImageSize } from '@/app/lib/image-size';
 import { STAGES, formatCoord, groupFeatures, propertyStage, splitDescription } from '@/app/lib/property-details';
 import type { Property } from '@/app/lib/types';
@@ -79,6 +79,7 @@ export default async function PropertyDetailPage({ params }: Props) {
   const stage = propertyStage(property.property_situation);
   const specList = specs(property);
   const typeLabel = property.property_type ? propertyTypeLabel(property.property_type) : '';
+  const displayCode = propertyDisplayCode(property);
   const place = [property.neighborhood, [property.city, property.state].filter(Boolean).join('/')].filter(Boolean).join(', ');
   const hasCoords = typeof property.latitude === 'number' && typeof property.longitude === 'number';
   const mapsLink = hasCoords
@@ -231,10 +232,10 @@ export default async function PropertyDetailPage({ params }: Props) {
                   <span className="text-white/70">{typeLabel}</span>
                 </>
               )}
-              {property.property_code && (
+              {displayCode && (
                 <>
                   <span aria-hidden className="h-3 w-px bg-white/20" />
-                  <span className="text-white/55">Cód. {property.property_code}</span>
+                  <span className="text-white/55">Cód. {displayCode}</span>
                 </>
               )}
               {property.accepts_barter && (
@@ -299,7 +300,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             {/* Metadados discretos */}
             <p className="mt-4 border-t border-dashed border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
               {[
-                property.property_code ? `Cód. ${property.property_code}` : null,
+                displayCode ? `Cód. ${displayCode}` : null,
                 published && !Number.isNaN(published.getTime()) ? `Publicado em ${dateFmt.format(published)}` : null,
                 updated && !Number.isNaN(updated.getTime()) && published && updated.toDateString() !== published.toDateString()
                   ? `Atualizado em ${dateFmt.format(updated)}`

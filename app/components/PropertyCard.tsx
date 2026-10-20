@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BedDouble, Bookmark, Car, Expand, MapPin, Sparkles, Zap } from 'lucide-react';
 import type { Property } from '@/app/lib/types';
-import { formatCurrency, isExternalImage, isLancamento, purposeLabel } from '@/app/lib/utils';
+import { formatCurrency, isExternalImage, isLancamento, propertyDisplayCode, purposeLabel } from '@/app/lib/utils';
 import { useFavorites } from '@/app/hooks/useFavorites';
 import { PerspectiveFlipCard } from '@/components/ui/card-14';
 
@@ -24,6 +24,7 @@ export default function PropertyCard({ property }: Props) {
   const isRental = property.purpose === 'aluguel';
   const location = `${property.city}${property.neighborhood ? `, ${property.neighborhood}` : ''}`;
   const badge = isLancamento(property) ? 'Lançamento' : purposeLabel(property.purpose);
+  const displayCode = propertyDisplayCode(property);
 
   const roomsLabel =
     property.suites > 0
@@ -98,7 +99,7 @@ export default function PropertyCard({ property }: Props) {
         <div className="space-y-2 [transform-style:preserve-3d] [transform:translateZ(60px)]">
           <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-azure">
             <Sparkles className="size-3.5" />
-            <span>{property.property_code || 'Exclusivo Blueview'}</span>
+            <span>{displayCode || 'Exclusivo Blueview'}</span>
           </div>
           <h3 className="line-clamp-2 font-display text-xl font-bold leading-tight tracking-tight text-card-foreground transition duration-300 group-hover/p-card:text-accent">
             {property.title}

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, CalendarDays, CheckCircle2, Loader2, MessageCircle, X } from 'lucide-react';
 import { submitLeadAction } from '@/app/actions/submit-lead';
-import { formatCurrency, whatsappUrl } from '@/app/lib/utils';
+import { formatCurrency, propertyDisplayCode, whatsappUrl } from '@/app/lib/utils';
 import { useModal } from '@/app/hooks/useModal';
 import { cn } from '@/lib/utils';
 
@@ -40,6 +40,7 @@ export default function PropertyContactCard({ property, whatsapp }: Props) {
   const rent = property.purpose === 'aluguel';
   const price = rent ? property.rental_price : property.price;
   const close = useCallback(() => setIntent(null), []);
+  const displayCode = propertyDisplayCode(property);
 
   const priceLabel = rent ? 'Aluguel mensal' : 'Valor de venda';
 
@@ -76,9 +77,9 @@ export default function PropertyContactCard({ property, whatsapp }: Props) {
               : 'Você deixa nome e telefone e a equipe entra em contato.'}
           </p>
 
-          {property.property_code && (
+          {displayCode && (
             <p className="mt-5 border-t border-dashed border-white/15 pt-4 font-mono text-[11px] tracking-[0.2em] text-white/60">
-              CÓD. <span className="text-azure">{property.property_code}</span>
+              CÓD. <span className="text-azure">{displayCode}</span>
             </p>
           )}
         </div>
@@ -160,7 +161,8 @@ function ContactDialog({ property, whatsapp, intent, onIntent, onClose }: Dialog
   }, [intent]);
 
   const propertyUrl = `https://blueviewimoveis.com.br/imoveis/${property.id}`;
-  const code = property.property_code ? ` (${property.property_code})` : '';
+  const displayCode = propertyDisplayCode(property);
+  const code = displayCode ? ` (${displayCode})` : '';
   const visit = intent === 'visita';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -195,7 +197,7 @@ function ContactDialog({ property, whatsapp, intent, onIntent, onClose }: Dialog
     const msg =
       (visit ? `Olá! Gostaria de agendar uma visita ao imóvel abaixo:\n\n` : `Olá! Tenho interesse no imóvel abaixo:\n\n`) +
       `*${property.title}*\n` +
-      (property.property_code ? `Código: ${property.property_code}\n` : '') +
+      (displayCode ? `Código: ${displayCode}\n` : '') +
       `Link: ${propertyUrl}\n` +
       (periodLine ? `${periodLine}\n` : '') +
       `\nMeus dados:\n` +
@@ -228,7 +230,7 @@ function ContactDialog({ property, whatsapp, intent, onIntent, onClose }: Dialog
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-azure">
-              {property.property_code ? `Cód. ${property.property_code}` : 'Contato'}
+              {displayCode ? `Cód. ${displayCode}` : 'Contato'}
             </p>
             <h2 id={titleId} className="mt-1 font-display text-xl font-semibold text-white">
               {visit ? 'Agendar visita' : 'Tenho interesse'}

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { fetchAllProperties } from '@/app/lib/rehut-api';
+import { propertyDisplayCode } from '@/app/lib/utils';
 
 /** Item enxuto que o autocomplete da busca precisa (nome, onde fica e uma foto). */
 export interface PropertySuggestion {
@@ -24,7 +25,7 @@ export async function GET() {
       .map((p) => ({
         id: p.id,
         title: p.title.trim(),
-        code: p.property_code,
+        code: propertyDisplayCode(p) ?? undefined,
         neighborhood: p.neighborhood,
         city: p.city,
         type: p.property_type,

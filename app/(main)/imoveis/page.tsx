@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { fetchAllProperties } from '@/app/lib/rehut-api';
-import { normalizeText } from '@/app/lib/utils';
+import { normalizeText, propertyDisplayCode } from '@/app/lib/utils';
 import { matchesBairro } from '@/app/lib/locations';
 import { propertyStage } from '@/app/lib/property-details';
 import PropertyCard from '@/app/components/PropertyCard';
@@ -85,7 +85,7 @@ function applyFilters(properties: Property[], params: Filters): Property[] {
     const q = params.search.toLowerCase().trim();
     if (q) {
       list = list.filter((p) =>
-        [p.title, p.property_code, p.neighborhood, p.address, p.city]
+        [p.title, p.id, p.property_code, propertyDisplayCode(p), p.neighborhood, p.address, p.city]
           .some((field) => (field ?? '').toLowerCase().includes(q))
       );
     }

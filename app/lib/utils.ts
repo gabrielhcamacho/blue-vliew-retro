@@ -16,6 +16,16 @@ export function formatArea(value: number | null): string {
   return `${value} m²`;
 }
 
+/** Código público: imóveis DWV exibem só o número pesquisável no painel da Rehut. */
+export function propertyDisplayCode(
+  property: Pick<Property, 'id' | 'property_code'>,
+): string | null {
+  const dwvMatch = property.id.trim().match(/^dwv-(\d+)$/i);
+  if (dwvMatch) return dwvMatch[1];
+  if (property.property_code?.trim()) return property.property_code.trim();
+  return null;
+}
+
 export function propertyTypeLabel(type: string): string {
   const labels: Record<string, string> = {
     apartamento: 'Apartamento',
@@ -65,7 +75,8 @@ export function whatsappUrl(number: string, message = ''): string {
 }
 
 export function propertyWhatsAppMessage(property: Property, whatsapp: string): string {
-  const message = `Olá! Tenho interesse no imóvel "${property.title}" (${property.id}). Poderia me dar mais informações?`;
+  const code = propertyDisplayCode(property) ?? property.id;
+  const message = `Olá! Tenho interesse no imóvel "${property.title}" (${code}). Poderia me dar mais informações?`;
   return whatsappUrl(whatsapp, message);
 }
 

@@ -17,6 +17,7 @@ interface PropertyInfo {
   purpose: string;
   condominium: number | null;
   iptu: number | null;
+  iptu_period?: 'monthly' | 'yearly' | null;
 }
 
 interface Props {
@@ -56,7 +57,7 @@ export default function PropertyContactCard({ property, whatsapp }: Props) {
           {property.condominium || property.iptu ? (
             <dl className="mt-5 divide-y divide-white/10 border-y border-white/10 text-sm">
               {property.condominium ? <Fee label="Condomínio" value={property.condominium} /> : null}
-              {property.iptu ? <Fee label="IPTU" value={property.iptu} /> : null}
+              {property.iptu ? <Fee label="IPTU" value={property.iptu} period={property.iptu_period} /> : null}
             </dl>
           ) : null}
 
@@ -124,13 +125,13 @@ function Price({ value, rent, className }: { value: number | null; rent: boolean
   );
 }
 
-function Fee({ label, value }: { label: string; value: number }) {
+function Fee({ label, value, period = 'monthly' }: { label: string; value: number; period?: 'monthly' | 'yearly' | null }) {
   return (
     <div className="flex items-baseline justify-between gap-4 py-2.5">
       <dt className="text-white/60">{label}</dt>
       <dd className="tabular-nums text-white">
         {formatCurrency(value)}
-        <span className="text-white/50">/mês</span>
+        <span className="text-white/50">/{period === 'yearly' ? 'ano' : 'mês'}</span>
       </dd>
     </div>
   );

@@ -142,11 +142,11 @@ export default async function PropertyDetailPage({ params }: Props) {
   if (property.condominium || property.iptu) {
     sections.push({
       id: 'custos',
-      title: 'Custos mensais',
+      title: 'Custos do imóvel',
       body: (
         <dl className="grid max-w-md divide-y divide-white/10 border-y border-white/10">
           {property.condominium ? <CostRow label="Condomínio" value={property.condominium} /> : null}
-          {property.iptu ? <CostRow label="IPTU" value={property.iptu} /> : null}
+          {property.iptu ? <CostRow label="IPTU" value={property.iptu} period={property.iptu_period} /> : null}
         </dl>
       ),
     });
@@ -358,13 +358,13 @@ function FeatureList({ items }: { items: string[] }) {
   );
 }
 
-function CostRow({ label, value }: { label: string; value: number }) {
+function CostRow({ label, value, period = 'monthly' }: { label: string; value: number; period?: 'monthly' | 'yearly' | null }) {
   return (
     <div className="flex items-baseline justify-between gap-6 py-3">
       <dt className="text-white/65">{label}</dt>
       <dd className="tabular-nums text-white">
         {formatCurrency(value)}
-        <span className="text-white/50">/mês</span>
+        <span className="text-white/50">/{period === 'yearly' ? 'ano' : 'mês'}</span>
       </dd>
     </div>
   );

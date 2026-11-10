@@ -18,6 +18,7 @@ export interface Property {
   rental_price: number | null;
   daily_price: number | null;
   iptu: number | null;
+  iptu_period?: 'monthly' | 'yearly' | null;
   condominium: number | null;
   address: string;
   address_number?: string | null;

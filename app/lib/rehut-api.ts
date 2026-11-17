@@ -45,7 +45,7 @@ export async function fetchProperties(filters: PropertyFilters = {}): Promise<Pr
     limit: filters.limit || '20',
   });
 
-  const res = await fetch(url, { next: { revalidate: 60 } });
+  const res = await fetch(url, { next: { revalidate: 300 } });
   if (!res.ok) throw new Error(`Failed to fetch properties: ${res.status}`);
   return res.json();
 }
@@ -90,7 +90,7 @@ export async function fetchAllProperties(filters: PropertyFilters = {}): Promise
     });
 
   const getPage = async (page: number): Promise<PropertiesResponse> => {
-    const res = await fetch(pageUrl(page), { next: { revalidate: 60 } });
+    const res = await fetch(pageUrl(page), { next: { revalidate: 300 } });
     if (!res.ok) throw new Error(`Failed to fetch properties: ${res.status}`);
     return res.json();
   };
@@ -157,7 +157,7 @@ export async function fetchBlogPosts(params: {
     category: params.category,
   });
 
-  const res = await fetch(url, { next: { revalidate: 120, tags: ['blog'] } });
+  const res = await fetch(url, { next: { revalidate: 1800, tags: ['blog'] } });
   if (!res.ok) throw new Error(`Failed to fetch blog posts: ${res.status}`);
   return res.json();
 }
@@ -166,7 +166,7 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
   if (!API_CONFIGURED) return null;
   const url = buildUrl('public-blog-api', { slug });
 
-  const res = await fetch(url, { next: { revalidate: 120, tags: ['blog', `blog-${slug}`] } });
+  const res = await fetch(url, { next: { revalidate: 1800, tags: ['blog', `blog-${slug}`] } });
   if (!res.ok) return null;
   const data = await res.json();
   return data.success ? data.data : null;
@@ -205,7 +205,7 @@ export async function fetchSiteConfig(): Promise<SiteConfig> {
 
   try {
     const url = buildUrl('public-website-config-api');
-    const res = await fetch(url, { next: { revalidate: 300 } });
+    const res = await fetch(url, { next: { revalidate: 900 } });
     if (!res.ok) return withContentOverrides(defaults);
     const data = await res.json();
     // A API às vezes retorna campos como string vazia em vez de omiti-los;
